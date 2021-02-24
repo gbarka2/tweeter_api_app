@@ -10,6 +10,15 @@ class TweetsController < ApplicationController
     render json: {status: 200, tweet: @tweet}
   end
 
+  def create
+    tweet = Tweet.new(tweet_params)
+    if tweet.save
+      render json: {tweet: tweet}
+    else
+      render status: 422, json: {tweet: tweet, errors: tweet.errors}
+    end
+  end
+
   private
 
   def tweet_params
@@ -19,5 +28,5 @@ class TweetsController < ApplicationController
   def get_tweet
     @tweet = Tweet.find(params[:id])
   end
-  
+
 end

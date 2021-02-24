@@ -55,3 +55,32 @@ Processing by TweetsController#show as HTML
 Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1262)
 
 
+Started GET "/tweets" for ::1 at 2021-02-23 19:39:43 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as */*
+  Parameters: {"title"=>"Paths of Glory", "author"=>"Aiko Julio", "genre"=>"Biography/Autobiography", "publisher"=>"André Deutsch", "publish_date"=>"2020-04-09", "tweet"=>{"title"=>"Paths of Glory", "author"=>"Aiko Julio"}}
+  [1m[36mTweet Load (0.4ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/controllers/tweets_controller.rb:6:in `index'
+Completed 200 OK in 14ms (Views: 5.7ms | ActiveRecord: 5.0ms | Allocations: 5225)
+
+
+Started POST "/tweets" for ::1 at 2021-02-23 19:40:40 -0700
+Processing by TweetsController#create as */*
+  Parameters: {"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01", "tweet"=>{"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTweet Create (0.6ms)[0m  [1m[32mINSERT INTO "tweets" ("title", "content", "author") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "WTF"], ["content", "Somebody finished the vodka and didn't tell me!"], ["author", "AveryAnders01"]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 2232)
+
+
+Started GET "/tweets" for ::1 at 2021-02-23 19:40:44 -0700
+Processing by TweetsController#index as */*
+  Parameters: {"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01", "tweet"=>{"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01"}}
+  [1m[36mTweet Load (0.3ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/controllers/tweets_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 867)
+
+
