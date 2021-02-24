@@ -19,6 +19,5 @@ class TweetsController < ApplicationController
   def get_tweet
     @tweet = Tweet.find(params[:id])
   end
-
   
 end
