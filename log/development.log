@@ -84,3 +84,26 @@ Processing by TweetsController#index as */*
 Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 867)
 
 
+Started GET "/tweets/3" for ::1 at 2021-02-23 19:42:42 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#show as */*
+  Parameters: {"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01", "id"=>"3", "tweet"=>{"title"=>"WTF", "content"=>"Somebody finished the vodka and didn't tell me!", "author"=>"AveryAnders01"}}
+  [1m[36mTweet Load (0.5ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:34:in `get_tweet'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 5.2ms | Allocations: 5654)
+
+
+Started PUT "/tweets/3" for ::1 at 2021-02-23 19:42:50 -0700
+Processing by TweetsController#update as */*
+  Parameters: {"title"=>"WTF", "content"=>"Somebody finished the beer and didn't tell me!", "author"=>"AveryAnders01", "id"=>"3", "tweet"=>{"title"=>"WTF", "content"=>"Somebody finished the beer and didn't tell me!", "author"=>"AveryAnders01"}}
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:34:in `get_tweet'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:23:in `update'
+  [1m[36mTweet Update (2.4ms)[0m  [1m[33mUPDATE "tweets" SET "content" = $1 WHERE "tweets"."id" = $2[0m  [["content", "Somebody finished the beer and didn't tell me!"], ["id", 3]]
+  ↳ app/controllers/tweets_controller.rb:23:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:23:in `update'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 2634)
+
+
