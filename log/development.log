@@ -142,3 +142,27 @@ Processing by TweetsController#index as */*
 Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 866)
 
 
+Started GET "/tweets/" for ::1 at 2021-02-23 19:59:50 -0700
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.6ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/controllers/tweets_controller.rb:6:in `index'
+Completed 200 OK in 19ms (Views: 6.1ms | ActiveRecord: 5.9ms | Allocations: 5972)
+
+
+Started GET "/tweets/about" for ::1 at 2021-02-23 20:01:58 -0700
+Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"about"}
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:39:in `get_tweet'
+Completed 404 Not Found in 10ms (ActiveRecord: 4.6ms | Allocations: 1981)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Tweet with 'id'=about):
+  
+app/controllers/tweets_controller.rb:39:in `get_tweet'
+Started GET "/tweets/1/about" for ::1 at 2021-02-23 20:02:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/tweets/1/about"):
+  
